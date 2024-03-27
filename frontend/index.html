@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Registration Form</h2>
+  <form id="regForm">
+    Name: <input type="text" name="name" required>
+    Email: <input type="email" name="email" required>
+    <input type="submit">
+  </form>
+
+  <script>
+    document.getElementById('regForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      await fetch('http://192.168.18.149:5001/store', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      alert('Data submitted!');
+    };
+  </script>
+</body>
+</html>
