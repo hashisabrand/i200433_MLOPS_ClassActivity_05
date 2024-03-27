@@ -12,8 +12,8 @@ def store():
     name = request.json['name']
     email = request.json['email']
     mongo.db.users.insert_one({'name': name, 'email': email})
-    print("HelloWorld")
     return jsonify(message="Data stored successfully"), 201
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001, debug=True)
+
